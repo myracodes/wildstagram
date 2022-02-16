@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 
-export default function CameraScreen() {
+export function CameraScreen() {
 
  return <Text>This is CameraScreen</Text>
 
