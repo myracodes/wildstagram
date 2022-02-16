@@ -9,6 +9,7 @@ import { CameraScreen, FeedScreen, ImagesScreen } from "./screens";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
   return (
     <NavigationContainer>
       <Tab.Navigator
