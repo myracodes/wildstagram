@@ -19,15 +19,15 @@ export default function App() {
             if (route.name === "Camera") {
               iconName = focused
                 ? "camera"
-                : "camera";
+                : "camera-outline";
             } else if (route.name === "Images") {
               iconName = focused
               ? "image"
-              : "image";
+              : "image-outline";
             } else if (route.name === "Feed") {
               iconName = focused
               ? "infinite"
-              : "infinite";
+              : "infinite-outline";
             }
 
             // You can return any component that you like here!
