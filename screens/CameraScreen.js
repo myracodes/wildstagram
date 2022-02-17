@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { Camera } from "expo-camera";
+import * as ImageManipulator from "expo-image-manipulator";
 
 export function CameraScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const cameraRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -21,9 +23,16 @@ export function CameraScreen() {
   }
   return (
     <>
-      <Camera style={styles.cameraContainer} />
+      <Camera style={styles.cameraContainer} ref={cameraRef} />
       <Button
-        onPress={() => console.log('picture button pressed :D')}
+        onPress={async () => {
+            const pictureMetadata = await cameraRef.current.takePictureAsync();
+            console.log("pictureMetadata", pictureMetadata);
+            console.log(
+              await ImageManipulator.manipulateAsync(pictureMetadata.uri, [
+                { resize: { width: 800 } },
+              ]))
+        }}
         title="Take a picture"
         color="pink"
         accessibilityLabel="Take a picture"
